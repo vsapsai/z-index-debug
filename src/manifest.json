@@ -1,0 +1,15 @@
+{
+	"manifest_version": 2,
+
+	"name": "z-index debugging tool",
+	"description": "Extension to help with z-index debugging.",
+	"version": "0.1.0",
+
+    "permissions": [
+        "<all_urls>"
+    ],
+	"devtools_page": "devtools.html",
+    "background": {
+        "scripts": ["background.js"]
+    }
+}
