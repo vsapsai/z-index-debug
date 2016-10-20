@@ -12,6 +12,10 @@
         }
     });
 
+    if (visibleForTesting && (visibleForTesting.id === "z-index debug plugin")) {
+        visibleForTesting.exports.getElementTreeData = getElementTreeData;
+    }
+
     function getElementTreeData(element) {
         var result = {
             rect: [element.offsetLeft, element.offsetTop, element.offsetWidth, element.offsetHeight]

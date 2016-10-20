@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test z-index debug plugin</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.4/jasmine.css">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.4/jasmine.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.4/jasmine-html.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.4/boot.js"></script>
+
+    <script type="text/javascript">
+        var visibleForTesting = {
+            id: "z-index debug plugin",
+            exports: {}
+        }
+    </script>
+    <script type="text/javascript" src="chrome-api-mock.js"></script>
+    <script type="text/javascript" src="../src/content-script.js"></script>
+    <script type="text/javascript" src="content-script-spec.js"></script>
+</head>
+<body>
+</body>
+</html>
