@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>z-index debug plugin quick dev</title>
+    <style type="text/css">
+    .subframe {
+        float: left;
+    }
+    </style>
+
+    <script type="text/javascript">
+    var runtimeListeners = [];
+    var connectionListeners = [];
+    var connectionMessageQueue = [];
+    window.communicationChannel = {
+        postConnectionMessage: function(message) {
+            if (message.name == "init") {
+                injectContentScript();
+            } else {
+                // Redirect to runtime listeners.
+                if (runtimeListeners.length == 0) {
+                    connectionMessageQueue.push(message);
+                } else {
+                    var i;
+                    for (i = 0; i < runtimeListeners.length; i++) {
+                        runtimeListeners[i](message);
+                    }
+                }
+            }
+        },
+        postRuntimeMessage: function(message) {
+            // Redirect to connection listeners.
+            connectionListeners.forEach(function(listener) {
+                listener(message);
+            });
+        },
+        addRuntimeListener: function(listener) {
+            runtimeListeners.push(listener);
+            // Redrive queued messages.
+            connectionMessageQueue.forEach(function(message) {
+                listener(message);
+            });
+            connectionMessageQueue = [];
+        },
+        addConnectionListener: function(listener) {
+            connectionListeners.push(listener);
+        }
+    };
+
+    function createScript(src) {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = src;
+        return script;
+    }
+
+    function injectContentScript() {
+        var iFrameHead = window.frames["example"].document.getElementsByTagName("head")[0];
+        iFrameHead.appendChild(createScript("/quick-dev/chrome-api-mock.js"));
+        iFrameHead.appendChild(createScript("/src/content-script.js"));
+    }
+    </script>
+</head>
+<body>
+    <iframe class="subframe" name="example" src="/test-pages/mozilla-example.html" width="49%" height="500px"></iframe>
+    <iframe class="subframe" src="/quick-dev/panel.html" width="49%" height="500px"></iframe>
+</body>
+</html>
