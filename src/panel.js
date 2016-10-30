@@ -116,6 +116,11 @@
                 count += drawStackingContextTreeRecursive(context, children[i], true, colorIndex + count);
             }
         }
+        // Draw z-index values for stacking contexts.
+        context.fillStyle = "black";
+        context.font = "14px sans-serif";
+        context.fillText("z-index: " + stackingContextTree.zIndex,
+            stackingContextTree.elementRectangles[0][0] + 5, stackingContextTree.elementRectangles[0][1] + 15);
         return count;
     }
 
