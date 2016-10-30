@@ -1,16 +1,18 @@
-https://developer.chrome.com/extensions/overview
-https://developer.chrome.com/extensions/devtools
-https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context
+`z-index` CSS property looks deceptively simple. To show an element on top of others you just add `z-index: 1000;` in CSS and expect it to be sufficient. But reality turns out to be more complex than that. Ordering of elements depend on other properties and on `z-index` value of other elements in DOM hierarchy. On sufficiently big pages this interaction can get quite complex pretty quickly. The goal of this plugin it to help with understanding `z-index` and its effects.
 
+## Development
+Some of development relies on running simple HTTP server in project directory. The simplest way to do so is to run `python -m SimpleHTTPServer 8008` from corresponding directory.
 
-Features:
----------
-* Show z-index for all elements
-* Show which elements are roots of stacking contexts
-* Also show elements which aren't currently visible as z-index is often used for various menus
-* Warnings:
-** Show elements with z-index that has no effect because it's not the stacking context root
-** Show elements which z-index doesn't correspond to naive ordering. For example, show that 1.1000 is below 2
-* Warn about cross-browser incompatibilities
+### Running tests
+You can run tests by going to http://localhost:8008/test/ in browser after simple HTTP server is started.
 
-Also what I can do is to search StackOverflow for CSS z-index questions and see if the tool can help in those cases.
+### Quick dev
+Reloading plugin in browser takes some time and after reloading doesn't always work so to speed up development you can go to http://localhost:8008/quick-dev/ in browser after simple HTTP server is started. It imitates plugin behavior by showing in one <iframe> some HTML page and in another <iframe> z-index plugin panel.
+
+### Test in browser
+To test plugin in Chrome you can go to chrome://extensions/ and Load unpacked extension… In opened dialog select `src/` directory, i.e. directory that contains `manifest.json`.
+
+## Useful resources
+* https://developer.chrome.com/extensions/overview
+* https://developer.chrome.com/extensions/devtools
+* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context
