@@ -1,4 +1,6 @@
-`z-index` CSS property looks deceptively simple. To show an element on top of others you just add `z-index: 1000;` in CSS and expect it to be sufficient. But reality turns out to be more complex than that. Ordering of elements depends on other properties and on `z-index` value of other elements in DOM hierarchy. On sufficiently big pages this interaction can get quite complex pretty quickly. The goal of this plugin it to help with understanding `z-index` and its effects.
+`z-index` CSS property looks deceptively simple. To show an element on top of others you just add `z-index: 1000;` in CSS and expect it to be sufficient. But reality turns out to be more complex than that. Ordering of elements depends on other properties and on `z-index` value of other elements in DOM hierarchy. On sufficiently big pages this interaction can get quite complex pretty quickly. The goal of this plugin it to help with understanding `z-index` and its effects. Currently plugin looks the following way
+
+![z-index debugging tool](https://bytebucket.org/vsapsai/z-index-debug/raw/d00d16816c7f851f4fc32eedee669eb78604586b/screenshot.png)
 
 ## Development
 Some of development relies on running simple HTTP server in project directory. The simplest way to do so is to run `python -m SimpleHTTPServer 8008` from corresponding directory.
