@@ -7,7 +7,7 @@ Some of development relies on running simple HTTP server in project directory. T
 You can run tests by going to http://localhost:8008/test/ in browser after simple HTTP server is started.
 
 ### Quick dev
-Reloading plugin in browser takes some time and after reloading doesn't always work so to speed up development you can go to http://localhost:8008/quick-dev/ in browser after simple HTTP server is started. It imitates plugin behavior by showing in one <iframe> some HTML page and in another <iframe> z-index plugin panel.
+Reloading plugin in browser takes some time and after reloading doesn't always work so to speed up development you can go to http://localhost:8008/quick-dev/ in browser after simple HTTP server is started. It imitates plugin behavior by showing in one &lt;iframe&gt; some HTML page and in another &lt;iframe&gt; z-index plugin panel.
 
 ### Test in browser
 To test plugin in Chrome you can go to chrome://extensions/ and Load unpacked extension… In opened dialog select `src/` directory, i.e. directory that contains `manifest.json`.
