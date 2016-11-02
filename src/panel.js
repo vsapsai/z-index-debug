@@ -125,6 +125,10 @@
     }
 
     function getColor(index) {
-        return colors[index % colors.length];
+        var hexColor = colors[index % colors.length];
+        var red = parseInt(hexColor.substring(1, 3), 16);
+        var green = parseInt(hexColor.substring(3, 5), 16);
+        var blue = parseInt(hexColor.substring(5, 7), 16);
+        return "rgba(" + red + "," + green + "," + blue + ", 0.7)";
     }
 })();
