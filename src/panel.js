@@ -32,6 +32,10 @@
         tabId: chrome.devtools.inspectedWindow.tabId
     });
 
+    if ((typeof visibleForTesting !== "undefined") && visibleForTesting && (visibleForTesting.id === "z-index debug plugin")) {
+        visibleForTesting.exports.buildStackingContextTree = buildStackingContextTree;
+    }
+
     function updateElementTree(data) {
         canvas.width = data.rect[2];
         canvas.height = data.rect[3];
@@ -40,7 +44,7 @@
         drawStackingContextTree(stackingContextTree);
     }
 
-    function  buildStackingContextTree(elementTree) {
+    function buildStackingContextTree(elementTree) {
         var offsetLeft = elementTree.rect[0],
             offsetTop = elementTree.rect[1],
             width = elementTree.rect[2],
@@ -59,8 +63,6 @@
 
     function buildStackingContextTreeRecursive(node, elementTree, parentOffsetLeft, parentOffsetTop) {
         var offsetLeft = elementTree.rect[0] + parentOffsetLeft;
-        // In HTML offsetTop if position of the element's bottom and on canvas `y` is position of rect top.
-        // It's not applicable to root element because it doesn't have `offsetParent`.
         var offsetTop = elementTree.rect[1] + parentOffsetTop;
         var elementRect = [offsetLeft, offsetTop, elementTree.rect[2], elementTree.rect[3]];
         var currentNode;
